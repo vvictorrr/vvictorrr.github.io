@@ -1,0 +1,277 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main container */
+.container {
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Navigation */
+.nav {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+
+.nav-container {
+  max-width: 896px;
+  margin: 0 auto;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.nav-button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #e5e7eb;
+  color: #374151;
+  transition: all 0.2s;
+}
+
+.nav-button:hover {
+  background-color: #d1d5db;
+}
+
+.nav-button-active {
+  background-color: #2563eb;
+  color: white;
+}
+
+.nav-button-active:hover {
+  background-color: #1d4ed8;
+}
+
+/* Main content area */
+.main {
+  max-width: 896px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+/* Card styling */
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+}
+
+/* Typography */
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+.title2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+.text {
+  margin-bottom: 24px;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.placeholder {
+  color: #6b7280;
+  font-size: 16px;
+}
+
+/* Button group */
+.button-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* CTA Buttons */
+.cta-button {
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s;
+  border: none;
+}
+
+.cta-primary {
+  background-color: #2563eb;
+  color: white;
+}
+
+.cta-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.cta-secondary {
+  background-color: #374151;
+  color: white;
+}
+
+.cta-secondary:hover {
+  background-color: #1f2937;
+}
+
+.cta-outline {
+  background-color: transparent;
+  color: #374151;
+  border: 2px solid #374151;
+}
+
+.cta-outline:hover {
+  background-color: #374151;
+  color: white;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .main {
+    padding: 16px;
+  }
+  
+  .card {
+    padding: 24px;
+  }
+  
+  .title {
+    font-size: 28px;
+  }
+  
+  .nav-container {
+    justify-content: center;
+  }
+}
+
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Project Card */
+.project-card {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+  transition: box-shadow 0.2s;
+  position: relative;
+}
+
+.project-card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.project-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+/* Collapsible Description */
+.project-description {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.project-description p {
+  color: #374151;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.project-description-collapsed {
+  max-height: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-description-collapsed::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, #f9fafb);
+}
+
+/* Project Tags */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tag {
+  background-color: #dbeafe;
+  color: #1e40af;
+  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+/* Project Links */
+.project-links {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.project-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.project-link:hover {
+  color: #1d4ed8;
+}
+
+/* Read More Button */
+.read-more-btn {
+  background-color: transparent;
+  color: #2563eb;
+  border: none;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.read-more-btn:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
