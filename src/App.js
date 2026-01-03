@@ -8,14 +8,28 @@ const App = () => {
   const projects = [
     {
       id: 1,
-      title: 'Hexaquad Tri-Lock',
-      description: 'Alongside a partner, Electronics based project that involves a 4bit 4 input 3 attempt lock. Built the mechanism to activate the verification system and count the number of failures on a set of 3 leds using logic gates and a Johnson counter. On a correct attempt, the circuit turns on a separate LED.',
-      tags: ['Electronics', 'Logic Gates', 'Hardware']
+      title: 'Hexa-Quad-Tri Lock',
+      description: ['The Hexa-Quad-Tri Lock is a combination lock that allows the user to input and set a four-digit, four-bit binary (hexadecimal) code and gives the user three attempts to correctly guess the solution before triggering a lockout or activating a security system. Unlike a normal four-digit decimal lock, a four-digit hexadecimal lock gives ~65,000 combinations instead of 10,000, allowing for greater security.',
+        '     There are two sets of four double-pole, single-throw (DPST) quad switch blocks: one for setting the password that would under normal circumstances be obscured from the user, and another for the user to interact with and input the password. Using a series of XNOR and AND logic chips, the stored and input password can be compared to generate a signal that can be sent to a separate circuit to display the results to the user. A single push-button is used to activate the password-checking circuit, taking the output to either count up on a three-bit Johnson counter made using D-Flip-Flops if incorrect, or to clear the counter and activate a separate LED if correct. This LED can easily be connected to a physical locking mechanism or send out an external signal, allowing for easy modularity and adaptability. A Schmitt trigger and 555 timer were used in conjunction to reduce button bouncing (sending out multiple signals with a single press).',
+        'This project follows a project-based learning approach, emphasizing hands-on design, practical application, and iterative debugging. The device was stress-tested using a large variety of passwords, verifying proper counting and clearing behavior on all attempts to ensure correct logic and functionality. Ultimately, the outcome of this project is a device capable of validating hexadecimal inputs, tracking failed attempts, and producing visual status indicators corresponding to system state.',
+      'Currently working to publish and present at the American Society for Engineering Education Northeast Section (ASEE-NE) in 2026.'],
+      tags: ['Electronics', 'Logic Gates', 'Hardware'],
+      media: [
+        { type: 'image', src: '/images/Circuit1.png', alt: 'Circuit diagram of activation and counting mechanism' },
+        { type: 'image', src: '/images/Circuit2.png', alt: 'Circuit diagram of password verification mechanism' },
+        { type: 'video', src: '/videos/ElectronicsFinalDemo.mp4', alt: 'Demonstration of working circuit' }
+      ]
     },
     {
       id: 2,
-      title: 'Battery Prognostics',
-      description: 'Alongside a partner, performed EDA and built ML models on a NASA battery dataset to predict the remaining useful life and remaining capacity of a battery. Applied many electronics/physics based concepts. The project involved data preprocessing, feature engineering, and testing multiple machine learning algorithms including Random Forests, Neural Networks, and Support Vector Machines to achieve accurate predictions.',
+      title: 'Battery Prognostics Modeling',
+      description: ['Built and evaluated machine learning models to predict lithium-ion battery capacity fade and remaining useful life (RUL) using real NASA battery aging data. The project focused on feature engineering, regression modeling, and preventing data leakage when working with highly correlated time-series data. The goal was to identify key degradation patterns and build models that can anticipate battery failure before it occurs—an important problem for electric vehicles, renewable energy storage, and portable electronics.',
+      'Using a large, structured dataset of 34 batteries tested over thousands of charge, discharge, and impedance cycles, I engineered physics-inspired features from raw voltage, current, temperature, and impedance measurements. These included voltage drop, discharge duration, internal resistance, and impedance phase metrics, allowing the models to capture nonlinear degradation behavior without processing full high-frequency time series.',
+      'I performed extensive exploratory data analysis, revealing that higher operating temperatures accelerate capacity loss, while shorter discharge times strongly correlate with reduced RUL. Multiple regression models were trained and evaluated, including Linear Regression, K-Nearest Neighbors (KNN), Random Forest, and XGBoost, with careful data splitting by battery ID to prevent data leakage.',
+      'Key Results:',
+      ' - XGBoost achieved the best performance for capacity prediction (R² ≈ 0.94), highlighting the importance of impedance phase and internal resistance as aging indicators.',
+      ' - KNN performed best for RUL prediction (R² ≈ 0.97), suggesting that local similarity between degradation cycles is highly informative.',
+      ' - Nonlinear models significantly outperformed linear approaches, confirming that battery aging is driven by complex feature interactions rather than simple trends.'],
       tags: ['Machine Learning', 'EDA', 'Physics'],
       links: [
         { text: 'Paper', url: '#' },
@@ -30,25 +44,31 @@ const App = () => {
     },
     {
       id: 4,
+      title: 'Line Following Robot',
+      description: 'Modeled the top and bottom plates in CAD and 3D printed them. Programmed the robot in arduino, used a basic color sensor on the bottom to follow the line.',
+      tags: ['Flask', 'PostgreSQL', 'Full-Stack']
+    },
+    {
+      id: 5,
       title: 'Brain Stroke Prediction',
       description: 'Alongside two partners, performed EDA and built many ML models on brain stroke patients to predict whether or not a person would have a brain stroke. Analyzed various risk factors including age, BMI, glucose levels, and lifestyle factors.',
       tags: ['Machine Learning', 'Healthcare', 'Data Analysis']
     },
     {
-      id: 5,
+      id: 6,
       title: 'Brain Tumor Imaging',
       description: 'Trained a CNN on a image set of brain scans of individuals with and without brain tumors to predict if a person had a brain tumor or not. Implemented data augmentation techniques and achieved high accuracy on the validation set.',
       tags: ['Deep Learning', 'CNN', 'Medical Imaging']
     },
     {
-      id: 6,
+      id: 7,
       title: 'Blackjack Algorithm',
       description: 'Developed an optimal strategy algorithm for blackjack gameplay using dynamic programming and probability theory.',
       tags: ['Algorithms', 'Python']
     }
   ];
 
-  const research = [
+  const researchs = [
     {
       id: 1,
       title: 'ORNL Neutron Reflection',
@@ -73,6 +93,29 @@ const App = () => {
       [projectId]: !prev[projectId]
     }));
   };
+
+  const skills = {
+  'Programming Languages': ['Python', 'SQL', 'R', 'C++', 'JavaScript', 'HTML', 'CSS'],
+  'Machine Learning & AI': ['TensorFlow', 'PyTorch', 'Scikit-learn'],
+  // ... more categories
+};
+const coursework = [
+  'DS3000 - Foundations of Data Science',
+  'DS2500 - Intermediate Programming with Data',
+  'DS3500 - Advanced Programming with Data',
+  'CS3000 - Algorithms and Data',
+  'CS3520 - Programming in C++',
+  'DS3200 - Databases',
+  'MATH3081 - Probability and Statistics',
+  'MATH2331 - Linear Algebra',
+  'MATH4606 - Math & Computational Methods for Physics',
+  'PHYS2371 - Electronics',
+  'PHYS2303 - Modern Physics',
+  'CS1800 - Discrete Structures',
+  'MATH2331 - Foundations of Cybersecurity',
+  'PHIL 1145 - Tech and Human Values',
+  // ... more courses
+];
 
   return (
     <div className="container">
@@ -143,7 +186,7 @@ const App = () => {
           </div>
         )}
 
-        {/* PROJECTS PAGE - EMPTY */}
+        {/* PROJECTS PAGE */}
         {currentPage === 'projects' && (
           <div className="card">
             <h1 className="title">Projects & Research</h1>
@@ -151,15 +194,49 @@ const App = () => {
             <div className="projects-grid">
               {projects.map(project => {
                 const isExpanded = expandedProjects[project.id];
-                const needsReadMore = project.description.length > 200;
+                const descriptionLength = Array.isArray(project.description) 
+                  ? project.description.join(' ').length 
+                  : project.description.length;
+                const needsReadMore = descriptionLength > 200;
                 
                 return (
                   <div key={project.id} className="project-card">
                     <h3 className="project-title">{project.title}</h3>
                     
                     <div className={`project-description ${!isExpanded && needsReadMore ? 'project-description-collapsed' : ''}`}>
-                      <p>{project.description}</p>
+                      {Array.isArray(project.description) ? (
+                        project.description.map((paragraph, idx) => (
+                          <p key={idx}>{paragraph}</p>
+                        ))
+                      ) : (
+                        <p>{project.description}</p>
+                      )}
                     </div>
+
+                    {project.media && isExpanded && (
+                      <div className="project-images">
+                        {project.media.map((item, idx) => (
+                          <div key={idx} className="project-image-container">
+                            {item.type === 'image' ? (
+                              <img 
+                                src={item.src} 
+                                alt={item.alt}
+                                className="project-image"
+                              />
+                            ) : (
+                              <video 
+                                src={item.src}
+                                className="project-video"
+                                controls
+                              >
+                                Your browser does not support the video tag.
+                              </video>
+                            )}
+                            <p className="image-caption">{item.alt}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                     
                     <div className="project-tags">
                       {project.tags.map((tag, idx) => (
@@ -185,23 +262,83 @@ const App = () => {
                         {isExpanded ? 'Show Less' : 'Read More'}
                       </button>
                     )}
+
+                    {/* Show images even without Read More button if project has images but short description */}
+                    {project.media && !needsReadMore && (
+                      <div className="project-images">
+                        {project.media.map((item, idx) => (
+                          <div key={idx} className="project-image-container">
+                            {item.type === 'image' ? (
+                              <img 
+                                src={item.src} 
+                                alt={item.alt}
+                                className="project-image"
+                              />
+                            ) : (
+                              <video 
+                                src={item.src}
+                                className="project-video"
+                                controls
+                              >
+                                Your browser does not support the video tag.
+                              </video>
+                            )}
+                            <p className="image-caption">{item.alt}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 );
               })}
             </div>
             <h2 className="title2">Research</h2>
             <div className="projects-grid">
-              {research.map(research => {
+              {researchs.map(research => {
                 const isExpanded = expandedProjects[research.id];
-                const needsReadMore = research.description.length > 200;
+                const descriptionLength = Array.isArray(research.description) 
+                  ? research.description.join(' ').length 
+                  : research.description.length;
+                const needsReadMore = descriptionLength > 200;
                 
                 return (
                   <div key={research.id} className="project-card">
                     <h3 className="project-title">{research.title}</h3>
-                    
+
                     <div className={`project-description ${!isExpanded && needsReadMore ? 'project-description-collapsed' : ''}`}>
-                      <p>{research.description}</p>
+                      {Array.isArray(research.description) ? (
+                        research.description.map((paragraph, idx) => (
+                          <p key={idx}>{paragraph}</p>
+                        ))
+                      ) : (
+                        <p>{research.description}</p>
+                      )}
                     </div>
+
+                    {research.media && isExpanded && (
+                      <div className="project-images">
+                        {research.media.map((item, idx) => (
+                          <div key={idx} className="project-image-container">
+                            {item.type === 'image' ? (
+                              <img 
+                                src={item.src} 
+                                alt={item.alt}
+                                className="project-image"
+                              />
+                            ) : (
+                              <video 
+                                src={item.src}
+                                className="project-video"
+                                controls
+                              >
+                                Your browser does not support the video tag.
+                              </video>
+                            )}
+                            <p className="image-caption">{item.alt}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                     
                     <div className="project-tags">
                       {research.tags.map((tag, idx) => (
@@ -227,6 +364,31 @@ const App = () => {
                         {isExpanded ? 'Show Less' : 'Read More'}
                       </button>
                     )}
+                    {/* Show images even without Read More button if research has images but short description */}
+                    {research.media && !needsReadMore && (
+                      <div className="project-images">
+                        {research.media.map((item, idx) => (
+                          <div key={idx} className="project-image-container">
+                            {item.type === 'image' ? (
+                              <img 
+                                src={item.src} 
+                                alt={item.alt}
+                                className="project-image"
+                              />
+                            ) : (
+                              <video 
+                                src={item.src}
+                                className="project-video"
+                                controls
+                              >
+                                Your browser does not support the video tag.
+                              </video>
+                            )}
+                            <p className="image-caption">{item.alt}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -245,8 +407,35 @@ const App = () => {
         {/* SKILLS PAGE - EMPTY */}
         {currentPage === 'skills' && (
           <div className="card">
-            <h1 className="title">Skills</h1>
-            <p className="placeholder">Content coming soon...</p>
+            <h1 className="title">Skills & Coursework</h1>
+            
+            <div className="skills-section">
+              <h2 className="section-heading">Technical Skills</h2>
+              <div className="skills-grid">
+                {Object.entries(skills).map(([category, skillList]) => (
+                  <div key={category} className="skill-category">
+                    <h3 className="skill-category-title">{category}</h3>
+                    <div className="skill-tags">
+                      {skillList.map((skill, idx) => (
+                        <span key={idx} className="skill-tag">{skill}</span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="skills-section">
+              <h2 className="section-heading">Relevant Coursework</h2>
+              <div className="coursework-grid">
+                {coursework.map((course, idx) => (
+                  <div key={idx} className="coursework-item">
+                    <span className="coursework-bullet">•</span>
+                    {course}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         )}
       </main>
