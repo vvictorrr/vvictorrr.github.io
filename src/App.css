@@ -286,10 +286,11 @@
   color: #374151;
   line-height: 1.6;
   margin: 0;
+  margin-bottom: 24px;
 }
 
 .project-description-collapsed {
-  max-height: 100px;
+  max-height: 180px;
   overflow: hidden;
   position: relative;
 }

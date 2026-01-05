@@ -32,33 +32,53 @@ const App = () => {
       ' - Nonlinear models significantly outperformed linear approaches, confirming that battery aging is driven by complex feature interactions rather than simple trends.'],
       tags: ['Machine Learning', 'EDA', 'Physics'],
       links: [
-        { text: 'Paper', url: '#' },
-        { text: 'GitHub', url: '#' }
+        { text: 'Paper', url: '/images/Battery_Prognostics_Paper.pdf' },
+        { text: 'GitHub', url: 'https://github.com/vvictorrr/Battery-Prognostics-Analysis'}
       ]
     },
     {
       id: 3,
       title: 'Debt Tracker',
-      description: 'Single handedly built a full end to end flask web app and fully designed a SQL database from scratch using PostgresSQL. Tested with four friends over the course of a week long period and saved over $30 in PayPal fees by simplifying debts. The application features user authentication, debt simplification algorithms, and a clean interface for managing group expenses.',
-      tags: ['Flask', 'PostgreSQL', 'Full-Stack']
+      description: ['Designed and built a full-stack web application that tracks shared expenses, simplifies debt networks, and reduces transaction fees. The system was tested in real-world use and demonstrated measurable financial savings by minimizing unnecessary peer-to-peer payments.',
+        'The system allows users to create accounts, add friends, log payments, and split expenses across selected participants. Rather than requiring immediate reimbursements after every expense, the app computes net balances and applies debt cancellation and transfer logic so users only make the minimum number of payments necessary. Debts are restricted to friend connections, preventing unwanted or anonymous obligations.',
+        'The application was built with a Flask (Python) backend, PostgreSQL database, and a lightweight HTML/CSS/JavaScript frontend. I designed the data model using UML class diagrams and a relational schema before implementation, then implemented authentication, friend relationships, expense tracking, and debt optimization logic.',
+        'To validate real-world effectiveness, I analyzed usage data using pandas and matplotlib, visualizing spending categories, net balances, and avoided transaction fees under PayPal’s pricing model. This analysis confirmed that debt simplification significantly reduces both the number of payments and cumulative fees for debtors and creditors.'
+      ],
+      tags: ['Flask', 'PostgreSQL', 'HTML/CSS'],
+      links: [
+        { text: 'GitHub', url: 'https://github.com/vvictorrr/debt-tracker'}
+      ]
     },
     {
       id: 4,
       title: 'Line Following Robot',
-      description: 'Modeled the top and bottom plates in CAD and 3D printed them. Programmed the robot in arduino, used a basic color sensor on the bottom to follow the line.',
-      tags: ['Flask', 'PostgreSQL', 'Full-Stack']
+      description: ['Built an autonomous line-following robot using 3D-printed components, IR sensors, and an Arduino Uno. Designed the robot chassis in CAD and fabricated custom top and bottom plates with precise mounting points for the microcontroller, motors, sensors, and wheels. Programmed the control logic in C++ on the Arduino, enabling the robot to reliably follow complex line paths and shapes using real-time IR sensor feedback.'],
+      tags: ['CAD', 'Robotics', 'C++']
     },
     {
       id: 5,
       title: 'Brain Stroke Prediction',
-      description: 'Alongside two partners, performed EDA and built many ML models on brain stroke patients to predict whether or not a person would have a brain stroke. Analyzed various risk factors including age, BMI, glucose levels, and lifestyle factors.',
-      tags: ['Machine Learning', 'Healthcare', 'Data Analysis']
+      description: ['Alongside two partners, I developed and evaluated machine learning models to predict the likelihood of brain stroke using patient health and demographic data. The project focused on feature preprocessing, handling severe class imbalance, and improving true positive detection for rare but high-risk medical events.',
+      'I led the data preprocessing and modeling pipeline for a K-Nearest Neighbors classifier. This included converting categorical health indicators into numerical representations and addressing missing smoking-status data using a weighted random imputation strategy, preserving the original distribution of known values. This preprocessing choice improved the model’s true positive rate by 6–8%, highlighting the importance of informed handling of missing clinical data.',
+      'Two classifiers, KNN and Random Forest, were trained and evaluated, with performance assessed using sensitivity (recall), specificity, and confusion matrices rather than accuracy alone. Due to strong class imbalance (stroke cases forming a small minority of the dataset), both models achieved high specificity but struggled with recall. KNN slightly outperformed Random Forest in detecting stroke cases, indicating that local similarity patterns were more informative than global decision boundaries for this dataset.',
+      'Exploratory data analysis and visualization revealed that age, glucose level, hypertension, BMI, and heart disease were the strongest predictors of stroke risk, while gender, marital status, and residence type contributed minimally. These findings align with established medical understanding and helped validate the model’s learned patterns.'
+      ],
+      tags: ['Machine Learning', 'Healthcare', 'Data Analysis'],
+      links: [
+        { text: 'Paper', url: '/images/Paper_Predicting_Brain_Strokes.pdf' },
+        { text: 'GitHub', url: 'https://github.com/vvictorrr/Brain-Strokes-Prediction'}
+      ]
     },
     {
       id: 6,
       title: 'Brain Tumor Imaging',
-      description: 'Trained a CNN on a image set of brain scans of individuals with and without brain tumors to predict if a person had a brain tumor or not. Implemented data augmentation techniques and achieved high accuracy on the validation set.',
-      tags: ['Deep Learning', 'CNN', 'Medical Imaging']
+      description: ['Trained a convolutional neural network (CNN) to classify brain MRI images into four categories—glioma, meningioma, pituitary tumor, and no tumor—using a supervised deep learning pipeline built in TensorFlow/Keras. The model was trained on resized and normalized MRI scans and evaluated on a held-out test set, achieving 95.4% classification accuracy with a loss of 0.21.',
+        'I implemented a custom data-loading pipeline using OpenCV and NumPy to preprocess images, including resizing to 224×224, pixel normalization, and categorical label encoding. The CNN architecture consisted of stacked convolution–max pooling layers for spatial feature extraction, followed by fully connected layers with dropout regularization to reduce overfitting. The model was trained using the Adam optimizer and categorical cross-entropy loss for multi-class classification.'
+      ],
+      tags: ['Deep Learning', 'CNN', 'Medical Imaging'],
+      links: [
+        { text: 'GitHub', url: 'https://github.com/vvictorrr/Brain-Tumors-CNN'}
+      ]
     },
     {
       id: 7,
@@ -79,7 +99,7 @@ const App = () => {
       id: 2,
       title: 'Harker ISE Crystallography',
       description: 'Conducted crystallography research under the direction of Prof. Chaoying Ni growing single crystals of a novel oxazolidinone compound named 5-(3-Acetyl-5-chloro-2-ethoxy-6-fluorophenyl)-2-oxazolidinone Performed SEM and XRPD to monitor crystal formation and successfully resolved the compound’s single-crystal structure and stereochemistry for further development of a new potential cancer drug. Results are formally published in a paper and were presented at the Spring 2024 American Chemical Society National Meeting',
-      tags: ['Research', 'Machine Learning'],
+      tags: ['Research', 'Lab Skills', 'Chemistry'],
       links: [
         { text: 'Paper', url: '#' },
       ]
@@ -197,7 +217,7 @@ const coursework = [
                 const descriptionLength = Array.isArray(project.description) 
                   ? project.description.join(' ').length 
                   : project.description.length;
-                const needsReadMore = descriptionLength > 200;
+                const needsReadMore = descriptionLength > 400;
                 
                 return (
                   <div key={project.id} className="project-card">
@@ -299,7 +319,7 @@ const coursework = [
                 const descriptionLength = Array.isArray(research.description) 
                   ? research.description.join(' ').length 
                   : research.description.length;
-                const needsReadMore = descriptionLength > 200;
+                const needsReadMore = descriptionLength > 700;
                 
                 return (
                   <div key={research.id} className="project-card">
