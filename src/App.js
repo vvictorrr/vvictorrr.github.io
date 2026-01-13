@@ -32,8 +32,8 @@ const App = () => {
       ' - Nonlinear models significantly outperformed linear approaches, confirming that battery aging is driven by complex feature interactions rather than simple trends.'],
       tags: ['Machine Learning', 'EDA', 'Physics'],
       media: [
-        { type: 'image', src: 'CapB0006.png', alt: 'Sample visualization of model performances on capacity prediction'}
-        { type: 'image', src: 'RULB0005.png', alt: 'Sample visualization of model performances on RUL prediction'}
+        { type: 'image', src: '/images/CapB0006.png', alt: 'Sample visualization of model performances on capacity prediction'},
+        { type: 'image', src: '/images/RULB0005.png', alt: 'Sample visualization of model performances on RUL prediction'}
       ],
       links: [
         { text: 'Paper', url: '/images/Battery_Prognostics_Paper.pdf' },
@@ -57,7 +57,10 @@ const App = () => {
       id: 4,
       title: 'Line Following Robot',
       description: ['Built an autonomous line-following robot using 3D-printed components, IR sensors, and an Arduino Uno. Designed the robot chassis in CAD and fabricated custom top and bottom plates with precise mounting points for the microcontroller, motors, sensors, and wheels. Programmed the control logic in C++ on the Arduino, enabling the robot to reliably follow complex line paths and shapes using real-time IR sensor feedback.'],
-      tags: ['CAD', 'Robotics', 'C++']
+      tags: ['CAD', 'Robotics', 'C++'],
+      media: [
+        { type: 'video', src: '/videos/IMG_9638.MOV', alt: 'Line Following Robot Demo'}
+      ],
     },
     {
       id: 5,
@@ -80,6 +83,10 @@ const App = () => {
         'I implemented a custom data-loading pipeline using OpenCV and NumPy to preprocess images, including resizing to 224×224, pixel normalization, and categorical label encoding. The CNN architecture consisted of stacked convolution–max pooling layers for spatial feature extraction, followed by fully connected layers with dropout regularization to reduce overfitting. The model was trained using the Adam optimizer and categorical cross-entropy loss for multi-class classification.'
       ],
       tags: ['Deep Learning', 'CNN', 'Medical Imaging'],
+      media: [
+        { type: 'image', src: '/images/Te-me_0023.jpg', alt: 'Brain tumor example image 1'},
+        { type: 'image', src: '/images/Te-pi_0164.jpg', alt: 'Brain tumor example image 2'}
+      ],
       links: [
         { text: 'GitHub', url: 'https://github.com/vvictorrr/Brain-Tumors-CNN'}
       ]
@@ -108,8 +115,45 @@ const App = () => {
       description: 'Conducted crystallography research under the direction of Prof. Chaoying Ni growing single crystals of a novel oxazolidinone compound named 5-(3-Acetyl-5-chloro-2-ethoxy-6-fluorophenyl)-2-oxazolidinone Performed SEM and XRPD to monitor crystal formation and successfully resolved the compound’s single-crystal structure and stereochemistry for further development of a new potential cancer drug. Results are formally published in a paper and were presented at the Spring 2024 American Chemical Society National Meeting',
       tags: ['Research', 'Lab Skills', 'Chemistry'],
       links: [
-        { text: 'Paper', url: '#' },
+        { text: 'Paper', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10993593/' },
       ]
+    },
+  ];
+
+  const hobbies = [
+    {
+      id: 1,
+      title: 'Robotics',
+      description: ['Currently I am a member of NURobotics\' VexU team as a programmer. I have worked with teammates to design an autonomous path planning UI system that the robot would follow. Designed the pure pursuit algorithm that the robot would use to follow a given path in C++ while interacting with the onboard optometry system.',
+      'Additionally, I am also currently teaching the club\'s internal Intro to Robotics course, guiding new members through the full hardware-software design process using CAD, 3D printing, and Arduino programming.',
+      'Previously, I was the lead programmer and one of two pilots for my high school\'s FIRST Robotics team for two years. The team placed 2nd in the State and won the Judge\'s Choice Award and State Finalist Award',],
+      media: [
+        { type: 'image', src: '/images/HSKY_robot.png', alt: 'Current VEXU Robot (that\'s me behind them!)'},
+      ]
+    },
+    {
+      id: 2,
+      title: 'Jewelry Making',
+      description: ['I make chainmail style jewelry using high quality stainless-steel materials. See some of my work below!'],
+      media: [
+        { type: 'image', src: '/images/crossnecklace.png', alt: 'One of my favorite necklaces'},
+        { type: 'image', src: '/images/bonenecklace.png', alt: 'Made from an old ring and real ethically sourced bones'},
+        { type: 'image', src: '/images/triangles.png', alt: 'Matching pair of chainmail triangles, the necklace can be worn under a shirt to give the illusion of being fully armored!'},
+        { type: 'image', src: '/images/bracelet.png', alt: 'One of the first projects I made, very simple bracelet'}
+      ],
+    },
+    {
+      id: 3,
+      title: 'Sewing',
+      description: ['I think sewing an incredibly important skill for anyone to have. Primarilly, I repair and tailor my own clothes but I have also made fully original pieces upcycled from old or thrifted clothes. I make all of my own patterns and have even made a giant axolotl plush from scratch.',
+      'Here is some of my work!'],
+      media: [
+        { type: 'image', src: '/images/blackpants.png', alt: 'Upcycled fabrice from about 3 pairs of jeans'},
+        { type: 'image', src: '/images/greenshirt.png', alt: 'Commission piece for a good friend'},
+        { type: 'image', src: '/images/applejoe1.png', alt: 'Made for my girlfriend\'s birthday'},
+        { type: 'image', src: '/images/applejoe2.png', alt: 'Meet Apple Joe!'},
+      ],
+      
     },
   ];
 
@@ -465,11 +509,106 @@ const coursework = [
           </div>
         )}
 
-        {/* ABOUT PAGE - EMPTY */}
+        {/* ABOUT PAGE */}
         {currentPage === 'about' && (
           <div className="card">
             <h1 className="title">About Me</h1>
-            <p className="placeholder">Content coming soon...</p>
+            <h2 className="title2">Hobbies & Interests</h2>
+            <div className="projects-grid">
+              {hobbies.map(hobby => {
+                const isExpanded = expandedProjects[hobby.id];
+                const descriptionLength = Array.isArray(hobby.description) 
+                  ? hobby.description.join(' ').length 
+                  : hobby.description.length;
+                const needsReadMore = descriptionLength > 400;
+                
+                return (
+                  <div key={hobby.id} className="project-card">
+                    <h3 className="project-title">{hobby.title}</h3>
+                    
+                    <div className={`project-description ${!isExpanded && needsReadMore ? 'project-description-collapsed' : ''}`}>
+                      {Array.isArray(hobby.description) ? (
+                        hobby.description.map((paragraph, idx) => (
+                          <p key={idx}>{paragraph}</p>
+                        ))
+                      ) : (
+                        <p>{hobby.description}</p>
+                      )}
+                    </div>
+
+                    {hobby.media && isExpanded && (
+                      <div className="project-images">
+                        {hobby.media.map((item, idx) => (
+                          <div key={idx} className="project-image-container">
+                            {item.type === 'image' ? (
+                              <img 
+                                src={item.src} 
+                                alt={item.alt}
+                                className="project-image"
+                              />
+                            ) : (
+                              <video 
+                                src={item.src}
+                                className="project-video"
+                                controls
+                              >
+                                Your browser does not support the video tag.
+                              </video>
+                            )}
+                            <p className="image-caption">{item.alt}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    
+                    {hobby.links && (
+                      <div className="project-links">
+                        {hobby.links.map((link, idx) => (
+                          <a key={idx} href={link.url} className="project-link">
+                            {link.text} →
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                    
+                    {needsReadMore && (
+                      <button 
+                        onClick={() => toggleProject(hobby.id)}
+                        className="read-more-btn"
+                      >
+                        {isExpanded ? 'Show Less' : 'Read More'}
+                      </button>
+                    )}
+
+                    {/* Show images even without Read More button if project has images but short description */}
+                    {hobby.media && !needsReadMore && (
+                      <div className="project-images">
+                        {hobby.media.map((item, idx) => (
+                          <div key={idx} className="project-image-container">
+                            {item.type === 'image' ? (
+                              <img 
+                                src={item.src} 
+                                alt={item.alt}
+                                className="project-image"
+                              />
+                            ) : (
+                              <video 
+                                src={item.src}
+                                className="project-video"
+                                controls
+                              >
+                                Your browser does not support the video tag.
+                              </video>
+                            )}
+                            <p className="image-caption">{item.alt}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
 
