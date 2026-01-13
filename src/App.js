@@ -195,12 +195,6 @@ const App = () => {
     'Natural Language Processing (NLP)'
   ],
 
-  'Databases': [
-    'PostgreSQL',
-    'MySQL',
-    'Apache Derby'
-  ],
-
   'Tools & Platforms': [
     'Git',
     'GitHub',
@@ -211,6 +205,11 @@ const App = () => {
     'Anaconda / Conda',
     'Render',
     'PROS'
+  ],
+    'Databases': [
+    'PostgreSQL',
+    'MySQL',
+    'Apache Derby'
   ]
 };
 const coursework = [
