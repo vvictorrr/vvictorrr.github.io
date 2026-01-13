@@ -259,6 +259,12 @@ const coursework = [
           >
             Skills
           </button>
+          <button
+            onClick={() => setCurrentPage('resume')}
+            className={currentPage === 'resume' ? 'nav-button nav-button-active' : 'nav-button'}
+          >
+            Resume
+          </button>
         </div>
       </nav>
 
@@ -267,13 +273,21 @@ const coursework = [
         {/* HOME PAGE */}
         {currentPage === 'home' && (
           <div className="card">
-            <h1 className="title">Victor Li</h1>
+            <h1 className="name">Victor Li</h1>
+            <div className="contact-info">
+              <p>
+                <a href="mailto:li.victor@northeastern.edu" className="contact-link">
+                  li.victor@northeastern.edu
+                </a>
+              </p>
+            </div>
             <p className="subtitle">Student | Researcher | Developer</p>
+            
             <p className="text">
               I’m a second-year student at Northeastern University, majoring in Data Science with minors in Mathematics and Physics,
               who likes building things that mix code, math, and creativity. 
               From machine learning models and web apps to robots and electronics, I enjoy working on problems where you get to understand how something works and then make it better. 
-              Outside of tech, I spend a lot of time sewing, making jewelry, and making art, which shapes how I think about design and problem-solving.
+              Outside of tech, I practice sewing, jewelry making, and making art, which shapes how I think about design and problem-solving.
             </p>
             <div className="button-group">
               <button
@@ -287,12 +301,6 @@ const coursework = [
                 className="cta-button cta-secondary"
               >
                 LinkedIn
-              </a>
-              <a
-                href="li.victor@northeastern.edu"
-                className="cta-button cta-outline"
-              >
-                Contact
               </a>
             </div>
           </div>
@@ -642,6 +650,31 @@ const coursework = [
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        )}
+        {currentPage === 'resume' && (
+          <div className="card">
+            <h1 className="title">Resume</h1>
+            <div className="resume-controls">
+              <a 
+                href="/images/Victor_Li_Resume.pdf" 
+                download 
+                className="cta-button cta-primary"
+              >
+                Download PDF
+              </a>
+            </div>
+            <div className="resume-container">
+              <iframe
+                src="/images/Victor_Li_Resume.pdf"
+                className="resume-iframe"
+                title="Victor Li Resume"
+              >
+                <p>Your browser does not support PDFs. 
+                  <a href="/images/Victor_Li_Resume.pdf">Download the PDF</a> instead.
+                </p>
+              </iframe>
             </div>
           </div>
         )}
