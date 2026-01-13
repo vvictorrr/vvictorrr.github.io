@@ -31,6 +31,10 @@ const App = () => {
       ' - KNN performed best for RUL prediction (R² ≈ 0.97), suggesting that local similarity between degradation cycles is highly informative.',
       ' - Nonlinear models significantly outperformed linear approaches, confirming that battery aging is driven by complex feature interactions rather than simple trends.'],
       tags: ['Machine Learning', 'EDA', 'Physics'],
+      media: [
+        { type: 'image', src: 'CapB0006.png', alt: 'Sample visualization of model performances on capacity prediction'}
+        { type: 'image', src: 'RULB0005.png', alt: 'Sample visualization of model performances on RUL prediction'}
+      ],
       links: [
         { text: 'Paper', url: '/images/Battery_Prognostics_Paper.pdf' },
         { text: 'GitHub', url: 'https://github.com/vvictorrr/Battery-Prognostics-Analysis'}
@@ -84,7 +88,10 @@ const App = () => {
       id: 7,
       title: 'Blackjack Algorithm',
       description: 'Developed an optimal strategy algorithm for blackjack gameplay using dynamic programming and probability theory.',
-      tags: ['Algorithms', 'Python']
+      tags: ['Algorithms', 'Python'],
+      links: [
+        {text: 'Github', url: 'https://github.com/vvictorrr/Blackjack-Odds'}
+      ]
     }
   ];
 
@@ -115,9 +122,52 @@ const App = () => {
   };
 
   const skills = {
-  'Programming Languages': ['Python', 'SQL', 'R', 'C++', 'JavaScript', 'HTML', 'CSS'],
-  'Machine Learning & AI': ['TensorFlow', 'PyTorch', 'Scikit-learn'],
-  // ... more categories
+  'Programming Languages': [
+    'Python',
+    'SQL',
+    'C++',
+    'R',
+    'JavaScript'
+  ],
+
+  'Web Technologies': [
+    'React',
+    'HTML',
+    'CSS',
+    'Flask',
+    'REST APIs',
+    'Web Scraping (Beautiful Soup)'
+  ],
+
+  'Data Science & Machine Learning': [
+    'Machine Learning',
+    'Feature Engineering',
+    'Pandas',
+    'NumPy',
+    'Matplotlib',
+    'TensorFlow',
+    'PyTorch',
+    'scikit-learn',
+    'Natural Language Processing (NLP)'
+  ],
+
+  'Databases': [
+    'PostgreSQL',
+    'MySQL',
+    'Apache Derby'
+  ],
+
+  'Tools & Platforms': [
+    'Git',
+    'GitHub',
+    'VS Code',
+    'Jupyter Notebook',
+    'PyCharm',
+    'Docker',
+    'Anaconda / Conda',
+    'Render',
+    'PROS'
+  ]
 };
 const coursework = [
   'DS3000 - Foundations of Data Science',
@@ -177,11 +227,10 @@ const coursework = [
             <h1 className="title">Victor Li</h1>
             <p className="subtitle">Student | Researcher | Developer</p>
             <p className="text">
-              I’m a second-year student at Northeastern University majoring in Data Science with minors in Mathematics and Physics, 
-              with a strong interest in building systems at the intersection of data, hardware, and science. 
-              Whether I’m designing a database, building robots, training models on massive datasets, sewing clothes, 
-              or designing jewelry, I love  the process of turning many complex parts into a single, coherent system. 
-              Currently, I’m interested in applying data-driven methods to real-world engineering and scientific problems.
+              I’m a second-year student at Northeastern University, majoring in Data Science with minors in Mathematics and Physics,
+              who likes building things that mix code, math, and creativity. 
+              From machine learning models and web apps to robots and electronics, I enjoy working on problems where you get to understand how something works and then make it better. 
+              Outside of tech, I spend a lot of time sewing, making jewelry, and making art, which shapes how I think about design and problem-solving.
             </p>
             <div className="button-group">
               <button
@@ -197,7 +246,7 @@ const coursework = [
                 LinkedIn
               </a>
               <a
-                href="victorli19707@gmail.com"
+                href="li.victor@northeastern.edu"
                 className="cta-button cta-outline"
               >
                 Contact
