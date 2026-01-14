@@ -346,7 +346,7 @@ const coursework = [
             <div className="hexagon-wrapper">
               <div className="hexagon-border">
                 <img 
-                  src="/images/headshot.jpeg" 
+                  src="/images/headshot.jpg" 
                   alt="Victor Li" 
                   className="headshot-hexagon-large"
                 />
