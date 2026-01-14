@@ -270,7 +270,9 @@ const coursework = [
 
       {/* Main Content */}
       <main className="main">
-        {/* HOME PAGE */}
+
+        {/*
+        {/* HOME PAGE 
         {currentPage === 'home' && (
           <div className="card">
             <h1 className="name">Victor Li</h1>
@@ -302,6 +304,53 @@ const coursework = [
               >
                 LinkedIn
               </a>
+            </div>
+          </div>
+        )}
+        */}
+        {/* HOME PAGE - HEXAGON VERSION (Large, Right Side) */}
+        {currentPage === 'home' && (
+          <div className="card home-card">
+            <div className="home-content">
+              <h1 className="name">Victor Li</h1>
+              <div className="contact-info">
+                <p>
+                  <a href="mailto:li.victor@northeastern.edu" className="contact-link">
+                    li.victor@northeastern.edu
+                  </a>
+                </p>
+              </div>
+              <p className="subtitle">Student | Researcher | Developer</p>
+
+              <p className="text">
+                I'm a second-year student at Northeastern University, majoring in Data Science with minors in Mathematics and Physics,
+                who likes building things that mix code, math, and creativity. 
+                From machine learning models and web apps to robots and electronics, I enjoy working on problems where you get to understand how something works and then make it better. 
+                Outside of tech, I practice sewing, jewelry making, and making art, which shapes how I think about design and problem-solving.
+              </p>
+              <div className="button-group">
+                <button
+                  onClick={() => setCurrentPage('projects')}
+                  className="cta-button cta-primary"
+                >
+                  View Projects
+                </button>
+                <a
+                  href="https://linkedin.com/in/victor-li"
+                  className="cta-button cta-secondary"
+                >
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+            <div className="hexagon-wrapper">
+              <div className="hexagon-border">
+                <img 
+                  src="/images/headshot.jpeg" 
+                  alt="Victor Li" 
+                  className="headshot-hexagon-large"
+                />
+              </div>
             </div>
           </div>
         )}
