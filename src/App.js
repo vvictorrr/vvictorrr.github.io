@@ -6,27 +6,23 @@ const App = () => {
   const [expandedProjects, setExpandedProjects] = useState({});
 
   const projects = [
-    {
+{
       id: 1,
-      title: 'Hexa-Quad-Tri Lock',
-      description: ['The Hexa-Quad-Tri Lock is a combination lock that allows the user to input and set a four-digit, four-bit binary (hexadecimal) code and gives the user three attempts to correctly guess the solution before triggering a lockout or activating a security system. Unlike a normal four-digit decimal lock, a four-digit hexadecimal lock gives ~65,000 combinations instead of 10,000, allowing for greater security.',
-        'There are two sets of four double-pole, single-throw (DPST) quad switch blocks: one for setting the password that would under normal circumstances be obscured from the user, and another for the user to interact with and input the password. Using a series of XNOR and AND logic chips, the stored and input password can be compared to generate a signal that can be sent to a separate circuit to display the results to the user. A single push-button is used to activate the password-checking circuit, taking the output to either count up on a three-bit Johnson counter made using D-Flip-Flops if incorrect, or to clear the counter and activate a separate LED if correct. This LED can easily be connected to a physical locking mechanism or send out an external signal, allowing for easy modularity and adaptability. A Schmitt trigger and 555 timer were used in conjunction to reduce button bouncing (sending out multiple signals with a single press).',
-        'This project follows a project-based learning approach, emphasizing hands-on design, practical application, and iterative debugging. The device was stress-tested using a large variety of passwords, verifying proper counting and clearing behavior on all attempts to ensure correct logic and functionality. Ultimately, the outcome of this project is a device capable of validating hexadecimal inputs, tracking failed attempts, and producing visual status indicators corresponding to system state.',
-        'Published and presented at the 2026 ASEE Northeast Section Conference at Southern New Hampshire University. doi: 10.18260/1-2--58569'],
-      tags: ['Electronics', 'Logic Gates', 'Hardware'],
-      media: [
-        { type: 'image', src: '/images/Circuit1.png', alt: 'Circuit diagram of activation and counting mechanism' },
-        { type: 'image', src: '/images/Circuit2.png', alt: 'Circuit diagram of password verification mechanism' },
-        { type: 'video', src: '/videos/ElectronicsFinalDemo.mp4', alt: 'Demonstration of working circuit' }
+      title: 'HEP-RAG: Physics Literature Q&A',
+      description: [
+        'Built a retrieval-augmented Q&A system over 80 high-energy physics papers (arXiv hep-ex, dark matter/mono-jet/MET searches) as a rigorous ablation-driven study rather than a demo. Every generated claim is cited to a specific paper and section, then checked by two independent signals (an LLM judge and a separately-trained NLI cross-encoder) before being labeled supported, uncertain, or flagged.',
+        'Retrieval uses a hybrid of SPECTER2 dense embeddings and BM25 sparse search fused via reciprocal rank fusion, then reranked with a cross-encoder. A full ablation across four retrieval configurations revealed that SPECTER2 contributed 0% standalone Recall@5 on scientific text versus 93.3% for the full pipeline, a domain-mismatch failure mode I diagnosed and documented rather than hidden.',
+        'The dual-signal hallucination detector (LLM-as-judge + DeBERTa-v3 NLI cross-encoder) achieved 0.59/0.97/0.74 precision/recall/F1. During testing it caught a real failure: a generated sentence citing correct physics numbers but attributed to the wrong source paper. The LLM judge was fooled by the sentence\'s fluency; the independent NLI model flagged it immediately: exactly the sycophancy-vs-independent-signal failure mode the architecture was designed to catch. Deployed on Streamlit Community Cloud.'
       ],
+      tags: ['RAG', 'NLP', 'HuggingFace', 'Physics'],
       links: [
-        { text: 'Paper', url: 'https://peer.asee.org/58569' }
+        { text: 'GitHub', url: 'https://github.com/vvictorrr/HEP-RAG' }
       ]
     },
     {
       id: 2,
       title: 'Battery Prognostics Modeling',
-      description: ['Built and evaluated machine learning models to predict lithium-ion battery capacity fade and remaining useful life (RUL) using real NASA battery aging data. The project focused on feature engineering, regression modeling, and preventing data leakage when working with highly correlated time-series data. The goal was to identify key degradation patterns and build models that can anticipate battery failure before it occurs—an important problem for electric vehicles, renewable energy storage, and portable electronics.',
+      description: ['Built and evaluated machine learning models to predict lithium-ion battery capacity fade and remaining useful life (RUL) using real NASA battery aging data. The project focused on feature engineering, regression modeling, and preventing data leakage when working with highly correlated time-series data. The goal was to identify key degradation patterns and build models that can anticipate battery failure before it occurs, an important problem for electric vehicles, renewable energy storage, and portable electronics.',
       'Using a large, structured dataset of 34 batteries tested over thousands of charge, discharge, and impedance cycles, I engineered physics-inspired features from raw voltage, current, temperature, and impedance measurements. These included voltage drop, discharge duration, internal resistance, and impedance phase metrics, allowing the models to capture nonlinear degradation behavior without processing full high-frequency time series.',
       'I performed extensive exploratory data analysis, revealing that higher operating temperatures accelerate capacity loss, while shorter discharge times strongly correlate with reduced RUL. Multiple regression models were trained and evaluated, including Linear Regression, K-Nearest Neighbors (KNN), Random Forest, and XGBoost, with careful data splitting by battery ID to prevent data leakage.',
       'Key Results:',
@@ -58,15 +54,30 @@ const App = () => {
     },
     {
       id: 4,
-      title: 'Line Following Robot',
-      description: ['Built an autonomous line-following robot using 3D-printed components, IR sensors, and an Arduino Uno. Designed the robot chassis in CAD and fabricated custom top and bottom plates with precise mounting points for the microcontroller, motors, sensors, and wheels. Programmed the control logic in C++ on the Arduino, enabling the robot to reliably follow complex line paths and shapes using real-time IR sensor feedback.'],
-      tags: ['CAD', 'Robotics', 'C++'],
-      media: [
-        { type: 'video', src: '/videos/IMG_9638.MOV', alt: 'Line Following Robot Demo'}
-      ],
+      title: 'D&D Encounter Planner',
+      description: 'A full-stack D&D 5e encounter planner that simulates a whole adventuring day of resource attrition rather than one isolated fight, with custom party and monster builds with real spell damage, subclass mechanics, legendary actions, and damage-type resistance math across all 13 damage types.',
+      tags: ['React', 'Flask', 'SQLAlchemy'],
+      links: [
+        { text: 'GitHub', url: 'https://github.com/vvictorrr/DnD-Encounter-Planner' }
+      ]
     },
     {
       id: 5,
+      title: 'Brain Tumor Imaging',
+      description: ['Trained a convolutional neural network (CNN) to classify brain MRI images into four categories (glioma, meningioma, pituitary tumor, and no tumor) using a supervised deep learning pipeline built in TensorFlow/Keras. The model was trained on resized and normalized MRI scans and evaluated on a held-out test set, achieving 95.4% classification accuracy with a loss of 0.21.',
+        'I implemented a custom data-loading pipeline using OpenCV and NumPy to preprocess images, including resizing to 224×224, pixel normalization, and categorical label encoding. The CNN architecture consisted of stacked convolution–max pooling layers for spatial feature extraction, followed by fully connected layers with dropout regularization to reduce overfitting. The model was trained using the Adam optimizer and categorical cross-entropy loss for multi-class classification.'
+      ],
+      tags: ['Deep Learning', 'CNN', 'Medical Imaging'],
+      media: [
+        { type: 'image', src: '/images/Te-me_0023.jpg', alt: 'Brain tumor example image 1'},
+        { type: 'image', src: '/images/Te-pi_0164.jpg', alt: 'Brain tumor example image 2'}
+      ],
+      links: [
+        { text: 'GitHub', url: 'https://github.com/vvictorrr/Brain-Tumors-CNN'}
+      ]
+    },
+    {
+      id: 6,
       title: 'Brain Stroke Prediction',
       description: ['Alongside two partners, I developed and evaluated machine learning models to predict the likelihood of brain stroke using patient health and demographic data. The project focused on feature preprocessing, handling severe class imbalance, and improving true positive detection for rare but high-risk medical events.',
       'I led the data preprocessing and modeling pipeline for a K-Nearest Neighbors classifier. This included converting categorical health indicators into numerical representations and addressing missing smoking-status data using a weighted random imputation strategy, preserving the original distribution of known values. This preprocessing choice improved the model\'s true positive rate by 6–8%, highlighting the importance of informed handling of missing clinical data.',
@@ -80,52 +91,41 @@ const App = () => {
       ]
     },
     {
-      id: 6,
-      title: 'Brain Tumor Imaging',
-      description: ['Trained a convolutional neural network (CNN) to classify brain MRI images into four categories—glioma, meningioma, pituitary tumor, and no tumor—using a supervised deep learning pipeline built in TensorFlow/Keras. The model was trained on resized and normalized MRI scans and evaluated on a held-out test set, achieving 95.4% classification accuracy with a loss of 0.21.',
-        'I implemented a custom data-loading pipeline using OpenCV and NumPy to preprocess images, including resizing to 224×224, pixel normalization, and categorical label encoding. The CNN architecture consisted of stacked convolution–max pooling layers for spatial feature extraction, followed by fully connected layers with dropout regularization to reduce overfitting. The model was trained using the Adam optimizer and categorical cross-entropy loss for multi-class classification.'
-      ],
-      tags: ['Deep Learning', 'CNN', 'Medical Imaging'],
+      id: 7,
+      title: 'Hexa-Quad-Tri Lock',
+      description: ['The Hexa-Quad-Tri Lock is a combination lock that allows the user to input and set a four-digit, four-bit binary (hexadecimal) code and gives the user three attempts to correctly guess the solution before triggering a lockout or activating a security system. Unlike a normal four-digit decimal lock, a four-digit hexadecimal lock gives ~65,000 combinations instead of 10,000, allowing for greater security.',
+        'There are two sets of four double-pole, single-throw (DPST) quad switch blocks: one for setting the password that would under normal circumstances be obscured from the user, and another for the user to interact with and input the password. Using a series of XNOR and AND logic chips, the stored and input password can be compared to generate a signal that can be sent to a separate circuit to display the results to the user. A single push-button is used to activate the password-checking circuit, taking the output to either count up on a three-bit Johnson counter made using D-Flip-Flops if incorrect, or to clear the counter and activate a separate LED if correct. This LED can easily be connected to a physical locking mechanism or send out an external signal, allowing for easy modularity and adaptability. A Schmitt trigger and 555 timer were used in conjunction to reduce button bouncing (sending out multiple signals with a single press).',
+        'This project follows a project-based learning approach, emphasizing hands-on design, practical application, and iterative debugging. The device was stress-tested using a large variety of passwords, verifying proper counting and clearing behavior on all attempts to ensure correct logic and functionality. Ultimately, the outcome of this project is a device capable of validating hexadecimal inputs, tracking failed attempts, and producing visual status indicators corresponding to system state.',
+        'Published and presented at the 2026 ASEE Northeast Section Conference at Southern New Hampshire University. doi: 10.18260/1-2--58569'],
+      tags: ['Electronics', 'Logic Gates', 'Hardware'],
       media: [
-        { type: 'image', src: '/images/Te-me_0023.jpg', alt: 'Brain tumor example image 1'},
-        { type: 'image', src: '/images/Te-pi_0164.jpg', alt: 'Brain tumor example image 2'}
+        { type: 'image', src: '/images/Circuit1.png', alt: 'Circuit diagram of activation and counting mechanism' },
+        { type: 'image', src: '/images/Circuit2.png', alt: 'Circuit diagram of password verification mechanism' },
+        { type: 'video', src: '/videos/ElectronicsFinalDemo.mp4', alt: 'Demonstration of working circuit' }
       ],
       links: [
-        { text: 'GitHub', url: 'https://github.com/vvictorrr/Brain-Tumors-CNN'}
+        { text: 'Paper', url: 'https://peer.asee.org/58569' }
       ]
     },
     {
-      id: 7,
+      id: 8,
+      title: 'Line Following Robot',
+      description: ['Built an autonomous line-following robot using 3D-printed components, IR sensors, and an Arduino Uno. Designed the robot chassis in CAD and fabricated custom top and bottom plates with precise mounting points for the microcontroller, motors, sensors, and wheels. Programmed the control logic in C++ on the Arduino, enabling the robot to reliably follow complex line paths and shapes using real-time IR sensor feedback.'],
+      tags: ['CAD', 'Robotics', 'C++'],
+      media: [
+        { type: 'video', src: '/videos/IMG_9638.MOV', alt: 'Line Following Robot Demo'}
+      ],
+    },
+    {
+      id: 9,
       title: 'Blackjack Algorithm',
       description: 'Developed an optimal strategy algorithm for blackjack gameplay using dynamic programming and probability theory.',
       tags: ['Algorithms', 'Python'],
       links: [
         {text: 'GitHub', url: 'https://github.com/vvictorrr/Blackjack-Odds'}
       ]
-    },
-    {
-      id: 8,
-      title: 'HEP-RAG: Physics Literature Q&A',
-      description: [
-        'Built a retrieval-augmented Q&A system over 80 high-energy physics papers (arXiv hep-ex, dark matter/mono-jet/MET searches) as a rigorous ablation-driven study rather than a demo. Every generated claim is cited to a specific paper and section, then checked by two independent signals — an LLM judge and a separately-trained NLI cross-encoder — before being labeled supported, uncertain, or flagged.',
-        'Retrieval uses a hybrid of SPECTER2 dense embeddings and BM25 sparse search fused via reciprocal rank fusion, then reranked with a cross-encoder. A full ablation across four retrieval configurations revealed that SPECTER2 contributed 0% standalone Recall@5 on scientific text versus 93.3% for the full pipeline — a domain-mismatch failure mode I diagnosed and documented rather than hidden.',
-        'The dual-signal hallucination detector (LLM-as-judge + DeBERTa-v3 NLI cross-encoder) achieved 0.59/0.97/0.74 precision/recall/F1. During testing it caught a real failure: a generated sentence citing correct physics numbers but attributed to the wrong source paper. The LLM judge was fooled by the sentence\'s fluency; the independent NLI model flagged it immediately — exactly the sycophancy-vs-independent-signal failure mode the architecture was designed to catch. Deployed on Streamlit Community Cloud.'
-      ],
-      tags: ['RAG', 'NLP', 'HuggingFace', 'Physics'],
-      links: [
-        { text: 'GitHub', url: 'https://github.com/vvictorrr/HEP-RAG' }
-      ]
-    },
-    {
-      id: 9,
-      title: 'D&D Encounter Planner',
-      description: 'A full-stack D&D 5e encounter planner that simulates a whole adventuring day of resource attrition rather than one isolated fight — custom party and monster builds with real spell damage, subclass mechanics, legendary actions, and damage-type resistance math across all 13 damage types.',
-      tags: ['React', 'Flask', 'SQLAlchemy'],
-      links: [
-        { text: 'GitHub', url: 'https://github.com/vvictorrr/DnD-Encounter-Planner' }
-      ]
     }
-  ];
+    ];
 
   const researchs = [
     {
@@ -145,7 +145,7 @@ const App = () => {
     },
     {
       id: 3,
-      title: 'ASEE NE 2026 — Digital Reaction-Time Game (co-author)',
+      title: 'ASEE NE 2026: Digital Reaction-Time Game (co-author)',
       description: 'Co-authored publication at the 2026 ASEE Northeast Section Conference presenting a digital reaction-time electronic game designed to engage students in experimental STEM education. The system was built from digital logic ICs and used as a hands-on teaching tool in undergraduate electronics coursework. Authors: Kempton, Smith, Slezak, Li, Zhang, Heiman, Kumarakuru.',
       tags: ['Research', 'Electronics', 'Education'],
       links: [
@@ -154,7 +154,7 @@ const App = () => {
     },
     {
       id: 4,
-      title: 'ASEE NE 2026 — Hexadecimal Combination Lock (first author)',
+      title: 'ASEE NE 2026: Hexadecimal Combination Lock (first author)',
       description: 'First-authored publication at the 2026 ASEE Northeast Section Conference presenting a modular hexadecimal combination lock built from gate-level logic ICs, a Johnson counter for failed-attempt tracking, Schmitt trigger debounce circuitry, and a 555 timer. The paper covers finite-state machine design, hardware verification across a full input space, and the project-based learning methodology behind the build. Authors: Li, Slezak, Schmidt, Heiman, Kumarakuru.',
       tags: ['Research', 'Electronics', 'Hardware'],
       links: [
@@ -359,7 +359,7 @@ const App = () => {
                 at the CMS Experiment at CERN, where I work on LLM/RAG systems for scientific
                 documentation, ML-based anomaly detection on particle detector data, and distributed
                 analysis pipelines supporting dark matter searches. I like building things that sit
-                at the intersection of code, math, and creativity — from machine learning systems
+                at the intersection of code, math, and creativity, from machine learning systems
                 and full-stack apps to robots and electronics. Outside of tech, I practice sewing,
                 jewelry making, and visual art, and I run tabletop D&D campaigns, which is where
                 several of my side projects have started from a real need at the table.
